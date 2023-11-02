@@ -2,31 +2,29 @@
 from ultralytics import YOLO
 import cv2
 
-# Leer nuestro modelo
+# load model
 model = YOLO("best.pt")
 
-# Realizar VideoCaptura
+# init camera
 cap = cv2.VideoCapture(0)
 
-# Bucle
+# loop
 while True:
-    # Leer nuestros fotogramas
+    # read frames
     ret, frame = cap.read()
 
-    # Leemos resultados
+    # resultados use the model for detection and segmentation
     resultados = model.predict(frame, imgsz = 640, conf = 0.5)
 
-    # Mostramos resultados
+    # creat a new frame with the results
     anotaciones = resultados[0].plot()
 
-    # Mostramos nuestros fotogramas
+    # show the frame
     cv2.imshow("DETECCION Y SEGMENTACION", anotaciones)
 
-    # Cerrar nuestro programa
+    # break if q is pressed
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
-
-        
 
 cap.release()
 cv2.destroyAllWindows()
