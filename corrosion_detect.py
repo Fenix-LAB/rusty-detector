@@ -3,7 +3,7 @@ from ultralytics import YOLO
 import cv2
 
 # Leer nuestro modelo
-model = YOLO(".pt")
+model = YOLO("best.pt")
 
 # Realizar VideoCaptura
 cap = cv2.VideoCapture(0)
@@ -14,7 +14,7 @@ while True:
     ret, frame = cap.read()
 
     # Leemos resultados
-    resultados = model.predict(frame, imgsz = 640, conf = 0.98)
+    resultados = model.predict(frame, imgsz = 640, conf = 0.5)
 
     # Mostramos resultados
     anotaciones = resultados[0].plot()
@@ -23,7 +23,7 @@ while True:
     cv2.imshow("DETECCION Y SEGMENTACION", anotaciones)
 
     # Cerrar nuestro programa
-    if cv2.waitKey(1) == 27:
+    if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
         
