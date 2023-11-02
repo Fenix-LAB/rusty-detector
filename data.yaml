@@ -1,0 +1,13 @@
+train: train/images
+val: valid/images
+test: test/images
+
+nc: 1
+names: ['Corrosion']
+
+roboflow:
+  workspace: corrosion-try
+  project: instance-corrosion
+  version: 3
+  license: MIT
+  url: https://universe.roboflow.com/corrosion-try/instance-corrosion/dataset/3
