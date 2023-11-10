@@ -1,6 +1,6 @@
 # Importamos las librerias
-from ultralytics import YOLO
-import cv2
+from ultralytics import YOLO # dentro de ultralytics esta YOLO
+import cv2 # libreriaa de procesamiento de imagenes
 
 # load model
 model = YOLO("model.pt")
@@ -14,7 +14,8 @@ while True:
     ret, frame = cap.read()
 
     # resultados use the model for detection and segmentation
-    resultados = model.predict(frame, imgsz = 640, conf = 0.7) # 0
+    resultados = model.predict(frame, imgsz = 640, conf = 0.7) 
+    # La red neuronal solo recibe imagenes de 640x640 
 
     # Confidence conf = 0.7 X
     # conf = 0.9   OK
