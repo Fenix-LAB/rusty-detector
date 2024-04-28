@@ -1,10 +1,14 @@
 from ultralytics import YOLO
 import cv2
+import torch
 
 """
 This a simple script uses the YOLO model to detect rust in real time using the webcam.
 
 """
+
+# VErify if CUDA is available
+print("CUDA available: ", torch.cuda.is_available())
 
 # load model
 model = YOLO("model.pt")
