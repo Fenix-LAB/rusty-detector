@@ -8,10 +8,16 @@ This a simple script uses the YOLO model to detect rust in real time using the w
 """
 
 # VErify if CUDA is available
-print("CUDA available: ", torch.cuda.is_available())
 
-# load model
-model = YOLO("model.pt")
+cuda = torch.cuda.is_available()
+print("CUDA available: ", cuda)
+
+# load model and set device
+if cuda:
+    model = YOLO("model.pt", device = "cuda")
+else:
+    model = YOLO("model.pt", device = "cpu")
+
 # init camera
 cap = cv2.VideoCapture(0) # Para cambiar la camara
 
