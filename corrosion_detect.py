@@ -13,10 +13,7 @@ cuda = torch.cuda.is_available()
 print("CUDA available: ", cuda)
 
 # load model and set device
-if cuda:
-    model = YOLO("model.pt", device = "cuda")
-else:
-    model = YOLO("model.pt", device = "cpu")
+model = YOLO('model.pt')
 
 # init camera
 cap = cv2.VideoCapture(0) # Para cambiar la camara
@@ -27,7 +24,7 @@ while True:
     ret, frame = cap.read()
 
     # resultados use the model for detection and segmentation
-    result = model.predict(frame, imgsz = 640, conf = 0.7) 
+    result = model.predict(frame, imgsz = 640, conf = 0.7, verbose = True)
 
     # creat a new frame with the results
     detection = result[0].plot()
