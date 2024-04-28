@@ -13,10 +13,10 @@ cuda = torch.cuda.is_available()
 print("CUDA available: ", cuda)
 
 # load model and set device
-model = YOLO('model.pt')
+model = YOLO('model_rusty_detector.pt')
 
 # init camera
-cap = cv2.VideoCapture(0) # Para cambiar la camara
+cap = cv2.VideoCapture(0)
 
 # loop
 while True:
