@@ -24,7 +24,7 @@ while True:
     ret, frame = cap.read()
 
     # resultados use the model for detection and segmentation
-    result = model.predict(frame, imgsz = 640, conf = 0.7, verbose = True)
+    result = model.predict(frame, imgsz = 640, conf = 0.7, verbose = False)
 
     # creat a new frame with the results
     detection = result[0].plot()
